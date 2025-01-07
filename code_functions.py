@@ -13,5 +13,20 @@ def extract(source):
     value = extractor.extract(source)['tours']
     return value
 
+def read_file():
+    with open("data.txt","r") as file:
+        listed_items = file.readlines()
+
+    return listed_items
+
+
+def store(new_items):
+    edited_item = new_items+"\n"
+
+    with open("data.txt","a") as file:
+        file.write(edited_item)
+
+
+
 def send_email():
     print("email sent")

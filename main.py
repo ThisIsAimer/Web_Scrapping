@@ -13,5 +13,9 @@ html_data = functions.scrape(url)
 extraction = functions.extract(html_data)
 print(extraction)
 
+existing_tours = functions.read_file()
+
 if extraction != "No upcoming tours":
-    functions.send_email()
+     if extraction not in existing_tours:
+        functions.store(extraction)
+        functions.send_email()
