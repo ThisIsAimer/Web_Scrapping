@@ -12,3 +12,6 @@ url = "http://programmer100.pythonanywhere.com/tours/"
 html_data = functions.scrape(url)
 extraction = functions.extract(html_data)
 print(extraction)
+
+if extraction != "No upcoming tours":
+    functions.send_email()

@@ -12,3 +12,6 @@ def extract(source):
     extractor = selectorlib.Extractor.from_yaml_file("extract.yaml")
     value = extractor.extract(source)['tours']
     return value
+
+def send_email():
+    print("email sent")
