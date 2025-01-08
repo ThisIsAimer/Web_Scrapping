@@ -1,11 +1,5 @@
 import code_functions as functions
-
-temp_string = """
-              <h1 class="animated fadeIn mb-4">“For the things we have to learn before we can do them, we learn by doing them”- Aristotle</h1>
-              <h1 align="right">Next Tour:</h1>
-              <h1 align="right " id="displaytimer">Lions of the IDE, Clone City, 6.5.2088</h1>
-              <p class="animated fadeIn text-muted">PythnoHow Team</p>
-              """
+import Important
 
 url = "http://programmer100.pythonanywhere.com/tours/"
 
@@ -15,7 +9,16 @@ print(extraction)
 
 existing_tours = functions.read_file()
 
+#making the message
+message = f"""\
+subject: new event found
+
+From: {Important.get_mail()}
+new tour found {extraction}
+"""
+
 if extraction != "No upcoming tours":
      if extraction not in existing_tours:
+
         functions.store(extraction)
-        functions.send_email()
+        functions.send_email(message)
