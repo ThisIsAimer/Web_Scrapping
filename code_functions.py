@@ -17,6 +17,7 @@ def extract(source):
 def read_file():
     with open("data.txt","r") as file:
         listed_items = file.readlines()
+        print(listed_items)
 
     return listed_items
 
@@ -30,12 +31,13 @@ def store(new_items):
 
 
 def send_email(message, receiver = Important.get_mail()):
-    host = "smtp.gmail.com"
-    post = 465
-    user_name = Important.get_mail()
-    password = Important.get_pass()
-
-    context = ssl.create_default_context()
-    with smtplib.SMTP_SSL(host, post, context=context) as server:
-        server.login(user_name, password)
-        server.sendmail(user_name, receiver, message)
+    # host = "smtp.gmail.com"
+    # post = 465
+    # user_name = Important.get_mail()
+    # password = Important.get_pass()
+    #
+    # context = ssl.create_default_context()
+    # with smtplib.SMTP_SSL(host, post, context=context) as server:
+    #     server.login(user_name, password)
+    #     server.sendmail(user_name, receiver, message)
+    print("mail sent")
