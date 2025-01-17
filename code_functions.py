@@ -21,9 +21,10 @@ class Files:
         self.fileWrite = open(filepath,"w")
 
 
-    def read(self):
+    def reading(self):
 
         listed_items = self.fileRead.readlines()
+        self.fileRead.close()
         print(listed_items)
 
         return listed_items
@@ -32,8 +33,8 @@ class Files:
     def store(self,new_items):
         edited_item = new_items+"\n"
 
-
         self.fileWrite.write(edited_item)
+        self.fileWrite.close()
 
 
 class Email:

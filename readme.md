@@ -4,3 +4,6 @@ we will delve into the world of extracting data from websites using Python. In t
 
 - Used the requests library to get html data from a web page.
 - used a yaml file with selectorlib to get the exact data we need
+
+
+Note: __init__ make the code a lot slower for some reason... need to fix it

@@ -16,7 +16,7 @@ while True:
     extraction = web.extract(html_data)
     print(extraction)
 
-    existing_tours = file.read()
+    existing_tours = file.reading()
 
     #making the message
     message = f"""\
