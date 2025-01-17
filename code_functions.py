@@ -2,31 +2,33 @@ import requests
 import selectorlib
 import smtplib,ssl,Important
 
+class WebScrape:
+    def scrape(self,url):
+        """uses python to scrape page source from url"""
+        request = requests.get(url)
+        source = request.text
+        return source
 
-def scrape(url):
-    """uses python to scrape page source from url"""
-    request = requests.get(url)
-    source = request.text
-    return source
-
-def extract(source):
-    extractor = selectorlib.Extractor.from_yaml_file("extract.yaml")
-    value = extractor.extract(source)['tours']
-    return value
-
-def read_file():
-    with open("data.txt","r") as file:
-        listed_items = file.readlines()
-        print(listed_items)
-
-    return listed_items
+    def extract(self,source):
+        extractor = selectorlib.Extractor.from_yaml_file("extract.yaml")
+        value = extractor.extract(source)['tours']
+        return value
 
 
-def store(new_items):
-    edited_item = new_items+"\n"
+class Files:
+    def read_file(self):
+        with open("data.txt","r") as file:
+            listed_items = file.readlines()
+            print(listed_items)
 
-    with open("data.txt","a") as file:
-        file.write(edited_item)
+        return listed_items
+
+
+    def store(self,new_items):
+        edited_item = new_items+"\n"
+
+        with open("data.txt","a") as file:
+            file.write(edited_item)
 
 
 
