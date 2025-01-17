@@ -9,11 +9,14 @@ url = "http://programmer100.pythonanywhere.com/tours/"
 while True:
     web = functions.WebScrape()
     file = functions.Files()
+    email = functions.Email()
+
+
     html_data = web.scrape(url)
     extraction = web.extract(html_data)
     print(extraction)
 
-    existing_tours = file.read_file()
+    existing_tours = file.read()
 
     #making the message
     message = f"""\
@@ -27,5 +30,4 @@ new tour found {extraction}
          if extraction+"\n" not in existing_tours:
 
             file.store(extraction)
-            functions.send_email(message)
-    time.sleep(3)
+            email.send(message)
