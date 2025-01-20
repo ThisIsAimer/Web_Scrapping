@@ -16,25 +16,26 @@ class WebScrape:
 
 
 class Files:
-    def __init__(self,filepath = "data.txt"):
-        self.fileRead = open(filepath,"r")
-        self.fileWrite = open(filepath,"w")
-
+    def __init__(self, filepath="data.txt"):
+        self.fileRead = open(filepath, "r")
+        self.fileWrite = open(filepath, "a")  # Open in append mode
 
     def reading(self):
-
-        listed_items = self.fileRead.readlines()
-        self.fileRead.close()
+        listed_items = []
+        for line in self.fileRead:
+            listed_items.append(line.strip())
         print(listed_items)
-
         return listed_items
 
+    def store(self, new_items):
+        self.fileWrite.write(new_items + "\n")
 
-    def store(self,new_items):
-        edited_item = new_items+"\n"
+    def close_r(self):
+        self.fileRead.close()
 
-        self.fileWrite.write(edited_item)
+    def close_w(self):
         self.fileWrite.close()
+
 
 
 class Email:

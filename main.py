@@ -17,6 +17,8 @@ while True:
     print(extraction)
 
     existing_tours = file.reading()
+    file.close_r()
+
 
     #making the message
     message = f"""\
@@ -26,8 +28,10 @@ From: {Important.get_mail()}
 new tour found {extraction}
 """
 
-    if extraction != "No upcoming tours":
-         if extraction+"\n" not in existing_tours:
+    if extraction != "No upcoming tours" and extraction not in existing_tours:
 
-            file.store(extraction)
-            email.send(message)
+        file.store(extraction)
+        file.close_w()
+        email.send(message)
+
+    time.sleep(3)
